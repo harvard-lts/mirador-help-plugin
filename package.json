@@ -1,5 +1,5 @@
 {
-  "name": "mirador-help-plugin",
+  "name": "@harvard-lts/mirador-help-plugin",
   "version": "1.0.0",
   "description": "mirador-help-plugin React component",
   "main": "lib/index.js",
