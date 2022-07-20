@@ -81,7 +81,7 @@ export class harvardHelpDialog extends Component {
                 <Typography variant="srOnly">(opens in a new tab)</Typography>
               </ListItemText>
             </ListItemLink>
-            <ListItemLink href="https://harvard.az1.qualtrics.com/jfe/form/SV_cA1RwzgmOpI87MF" target="_blank" rel="noopener">
+            <ListItemLink href="https://nrs.harvard.edu/urn-3:hul.ois:reportaproblem" target="_blank" rel="noopener">
               <ListItemIcon>
                 <ErrorIcon />
               </ListItemIcon>
