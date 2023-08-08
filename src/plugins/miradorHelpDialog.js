@@ -63,33 +63,28 @@ export class harvardHelpDialog extends Component {
         </DialogTitle>
         <DialogContent>         
           <List>
-            <ListItemLink href="https://docs.google.com/presentation/d/e/2PACX-1vRtpx-naAyksS0J5Jboe84367F4WXnS4gKabW0LiEihlft5HZCoO9dalZhrMVw7SUgvBDYEDrNpYvh1/embed?start=true&loop=true&delayms=10000#slide=id.g5bba0209b1_1_0" target="_blank" rel="noopener">
-              <ListItemIcon>
-                <StarIcon />
-              </ListItemIcon>
-              <ListItemText>
-                Take a tour
-                <Typography variant="srOnly">(opens in a new tab)</Typography>
-              </ListItemText>
-            </ListItemLink>
-            <ListItemLink href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/Harvard+Library+Viewer" target="_blank" rel="noopener">
-              <ListItemIcon>
-                <DescriptionIcon />
-              </ListItemIcon>
-              <ListItemText>
-                Read documentation
-                <Typography variant="srOnly">(opens in a new tab)</Typography>
-              </ListItemText>
-            </ListItemLink>
-            <ListItemLink href="https://nrs.harvard.edu/urn-3:hul.ois:reportaproblem" target="_blank" rel="noopener">
-              <ListItemIcon>
-                <ErrorIcon />
-              </ListItemIcon>
-              <ListItemText>
-                Report a problem
-                <Typography variant="srOnly">(opens in a new tab)</Typography>
-              </ListItemText>
-            </ListItemLink>
+            <ListItem className={classes.helpItem}>
+              <ListItemLink href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/Harvard+Library+Viewer" target="_blank" rel="noopener">
+                <ListItemIcon>
+                  <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText>
+                  Read documentation
+                  <Typography variant="srOnly">(opens in a new tab)</Typography>
+                </ListItemText>
+              </ListItemLink>
+            </ListItem>
+            <ListItem className={classes.helpItem}>
+              <ListItemLink href="https://nrs.harvard.edu/urn-3:hul.ois:reportaproblem" target="_blank" rel="noopener">
+                <ListItemIcon>
+                  <ErrorIcon />
+                </ListItemIcon>
+                <ListItemText>
+                  Report a problem
+                  <Typography variant="srOnly">(opens in a new tab)</Typography>
+                </ListItemText>
+              </ListItemLink>
+            </ListItem>
           </List>
         
         </DialogContent>
@@ -107,6 +102,7 @@ harvardHelpDialog.propTypes = {
   classes: PropTypes.shape({
     h2: PropTypes.string,
     h3: PropTypes.string,
+    helpItem: PropTypes.string,
   }).isRequired,
   closeDialog: PropTypes.func.isRequired,
   containerId: PropTypes.string.isRequired,
@@ -126,6 +122,9 @@ const styles = () => ({
   h3: {
     marginTop: '20px',
   },
+  helpItem: {
+    padding: 0,
+  }
 });
 
 export default {
