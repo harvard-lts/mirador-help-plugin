@@ -1,12 +1,12 @@
-import miradorHelpPlugin from './miradorHelpPlugin';
-import miradorHelpDialogPlugin from './miradorHelpDialog';
+import MiradorHelpPlugin from './plugins/miradorHelpPlugin';
+import MiradorHelpDialogPlugin from './plugins/miradorHelpDialog';
 
 export {
-  miradorHelpPlugin,
-  miradorHelpDialogPlugin,
+  MiradorHelpPlugin,
+  MiradorHelpDialogPlugin,
 };
 
 export default [
-  miradorHelpPlugin,
-  miradorHelpDialogPlugin,
+  MiradorHelpPlugin,
+  MiradorHelpDialogPlugin,
 ];
