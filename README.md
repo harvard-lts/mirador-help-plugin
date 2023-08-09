@@ -1,6 +1,6 @@
 # mirador-help-plugin
 
-Mirador plugin that adds a help modal window with a list of links.
+Mirador plugin that adds a help modal window with a list of links. Links are currently Harvard-specific.
 
 ## Requirements
 
