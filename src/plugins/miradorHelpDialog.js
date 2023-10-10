@@ -64,12 +64,12 @@ export class harvardHelpDialog extends Component {
         <DialogContent>         
           <List>
             <ListItem className={classes.helpItem}>
-              <ListItemLink href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/Harvard+Library+Viewer" target="_blank" rel="noopener">
+              <ListItemLink href="https://ask.library.harvard.edu/faq/392399" target="_blank" rel="noopener">
                 <ListItemIcon>
                   <DescriptionIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  Read documentation
+                  Using the Viewer
                   <Typography variant="srOnly">(opens in a new tab)</Typography>
                 </ListItemText>
               </ListItemLink>
