@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     id: "mirador",
     windows: [
       {
-        manifestId: "https://iiif.lib.harvard.edu/manifests/drs:4997399",
+        manifestId: "https://nrs.lib.harvard.edu/URN-3:HUAM:925863:MANIFEST:3",
       },
     ],
   };
