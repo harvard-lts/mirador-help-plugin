@@ -5,7 +5,7 @@
   "keywords": [
     "react-component"
   ],
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "mirador-help-plugin React component",
   "module": "dist/es/index.js",
   "files": [
