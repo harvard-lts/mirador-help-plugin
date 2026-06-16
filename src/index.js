@@ -1,5 +1,5 @@
-import MiradorHelpPlugin from './plugins/miradorHelpPlugin';
-import MiradorHelpDialogPlugin from './plugins/miradorHelpDialog';
+import MiradorHelpPlugin from './plugins/miradorHelpPlugin.jsx';
+import MiradorHelpDialogPlugin from './plugins/miradorHelpDialog.jsx';
 
 export {
   MiradorHelpPlugin,
