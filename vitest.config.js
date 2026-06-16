@@ -1,14 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  root: 'demo',
-  server: {
-    port: 9000,
-    open: true,
-  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -24,7 +18,10 @@ export default defineConfig({
       },
     },
   },
-  build: {
-    outDir: 'dist',
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./setupTests.js'],
+    include: ['src/**/*.{test,spec}.{js,jsx}', '__tests__/**/*.{test,spec}.{js,jsx}'],
   },
 });
