@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuItem from '@material-ui/core/MenuItem';
-import HelpIcon from '@material-ui/icons/Help';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import MenuItem from '@mui/material/MenuItem';
+import HelpIcon from '@mui/icons-material/Help';
 
 const helpDialogReducer = (state = {}, action) => {
   if (action.type === 'OPEN_WINDOW_DIALOG') {
@@ -30,47 +29,38 @@ const mapDispatchToProps = (dispatch, { windowId }) => ({
   openHelpDialog: () => dispatch({ type: 'OPEN_WINDOW_DIALOG', windowId, dialogType: 'help' }),
 });
 
-class harvardHelp extends Component {
-  openDialogAndCloseMenu() {
-    const { handleClose, openHelpDialog } = this.props;
-
+function HarvardHelp({ handleClose = () => {}, openHelpDialog = () => {} }) {
+  const openDialogAndCloseMenu = () => {
     openHelpDialog();
     handleClose();
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <MenuItem onClick={() => this.openDialogAndCloseMenu()}>
-          <ListItemIcon>
-            <HelpIcon />
-          </ListItemIcon>
-          <ListItemText primaryTypographyProps={{ variant: 'body1' }}>
-            Help
-          </ListItemText>
-        </MenuItem>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <MenuItem onClick={openDialogAndCloseMenu}>
+        <ListItemIcon>
+          <HelpIcon />
+        </ListItemIcon>
+        <ListItemText primaryTypographyProps={{ variant: 'body1' }}>
+          Help
+        </ListItemText>
+      </MenuItem>
+    </div>
+  );
 }
 
-harvardHelp.propTypes = {
+HarvardHelp.propTypes = {
   handleClose: PropTypes.func,
-  openDownloadDialog: PropTypes.func,
-};
-
-harvardHelp.defaultProps = {
-  handleClose: () => {},
-  openDownloadDialog: () => {},
+  openHelpDialog: PropTypes.func,
 };
 
 export default {
   target: 'WindowTopBarPluginMenu',
   mode: 'add',
   name: 'harvardHelpPlugin',
-  component: harvardHelp,
+  component: HarvardHelp,
   mapDispatchToProps,
   reducers: {
     windowDialogs: helpDialogReducer,
   },
-}
+};

@@ -1,4 +1,4 @@
-import Mirador from "mirador/dist/es/src/index";
+import Mirador from "mirador";
 import Plugin from "../src/index";
 
 document.addEventListener("DOMContentLoaded", () => {

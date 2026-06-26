@@ -1,4 +1,9 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+
+// Mock `mirador` so importing the plugins doesn't load the full browser bundle
+// (which triggers a jsdom HTMLCanvasElement.prototype.getContext error).
+vi.mock('mirador', () => ({ getContainerId: vi.fn() }));
+
 import plugins, { MiradorHelpPlugin, MiradorHelpDialogPlugin } from '../src/index.js';
 
 describe('mirador-help-plugin smoke test', () => {
