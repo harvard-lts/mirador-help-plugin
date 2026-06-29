@@ -1,0 +1,15 @@
+name: Node Unit Tests
+
+on:
+  push:
+    branches-ignore:
+      - badges/test-coverage
+  pull_request:
+    branches-ignore:
+      - badges/test-coverage
+  workflow_dispatch:
+
+jobs:
+  build-and-publish-dev-qa:
+    uses: harvard-lts/ga-reusable-workflows/.github/workflows/TestCoverageNode.yml@main
+    secrets: inherit
