@@ -1,6 +1,7 @@
 name: Node Unit Tests
 
 on:
+  # Don't trigger this on changes to the badge destination branch
   push:
     branches-ignore:
       - badges/test-coverage
@@ -10,6 +11,59 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-publish-dev-qa:
-    uses: harvard-lts/ga-reusable-workflows/.github/workflows/TestCoverageNode.yml@main
-    secrets: inherit
+  test-and-badge:
+    runs-on: ubuntu-latest
+    permissions:
+      # Needed so the default GITHUB_TOKEN can push the badge branch.
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        # Emits coverage/coverage-summary.json (see scripts/coverage-ci.mjs)
+        run: npm run test:unit
+
+      - name: Generate coverage badge
+        run: node scripts/make-coverage-badge.mjs
+
+      - name: Upload coverage badge artifact
+        # Runs on every branch so the badge can be previewed from the run summary
+        # without publishing to the badges/test-coverage branch.
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-badge
+          path: |
+            coverage.svg
+            coverage/coverage-summary.json
+          if-no-files-found: error
+
+      - name: Publish coverage badge
+        # Only publish from pushes to the default branch — PRs (including from
+        # forks) run the tests but never push the badge branch.
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          BADGE_BRANCH: badges/test-coverage
+        run: |
+          set -e
+          cp coverage.svg "${RUNNER_TEMP}/coverage.svg"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Create/reset an orphan branch containing only the badge.
+          git checkout --orphan "${BADGE_BRANCH}"
+          git rm -rf . >/dev/null 2>&1 || true
+          cp "${RUNNER_TEMP}/coverage.svg" coverage.svg
+          git add coverage.svg
+          if git diff --cached --quiet; then
+            echo "Coverage badge unchanged; nothing to publish."
+          else
+            git commit -m "Update coverage badge [skip ci]"
+            git push -f origin "${BADGE_BRANCH}"
+          fi
