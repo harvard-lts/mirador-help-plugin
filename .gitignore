@@ -3,6 +3,7 @@ es
 node_modules
 npm-debug.log*
 coverage
+coverage.svg
 
 .idea/
 .DS_Store
