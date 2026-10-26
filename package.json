@@ -5,7 +5,7 @@
   "keywords": [
     "react-component"
   ],
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "mirador-help-plugin React component",
   "module": "dist/es/index.js",
   "files": [
@@ -32,15 +32,15 @@
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^5.1.2",
-    "@vitest/coverage-v8": "^4.0.17",
-    "@vitest/ui": "^4.0.17",
+    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/ui": "^4.1.11",
     "jsdom": "^27.4.0",
     "mirador": "^4.1.0",
     "npm-run-all": "^4.1.5",
     "rollup": "^3.29.5",
     "url": "^0.11.4",
     "vite": "^8.0.16",
-    "vitest": "^4.0.17",
+    "vitest": "^4.1.11",
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
@@ -53,5 +53,8 @@
     "react-dom": "^19.0.0",
     "react-i18next": "^15.0.0",
     "redux": "^5.0.0"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
   }
 }
